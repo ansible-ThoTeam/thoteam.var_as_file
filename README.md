@@ -7,6 +7,7 @@
 <!--te-->
 
 ## Documentation for the collection
+To be completed
 
 ## Licence and copyright
 GNU GENERAL PUBLIC LICENSE v3 or later</br>
