@@ -9,6 +9,6 @@
 ## Documentation for the collection
 
 ## Licence and copyright
-GNU GENERAL PUBLIC LICENSE v3 or later
-(c) 2022 Olivier Clavel <olivier.clavel@thoteam.com>
-See COPYING or https://www.gnu.org/licenses/gpl-3.0.en.html
+GNU GENERAL PUBLIC LICENSE v3 or later</br>
+(c) 2022 Olivier Clavel <olivier.clavel@thoteam.com></br>
+See [COPYING](COPYING) or https://www.gnu.org/licenses/gpl-3.0.en.html
