@@ -1,0 +1,17 @@
+---
+- name: test for thoteam.var_as_file collection
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    some_content: "v3rys3cr3t"
+    my_tmp_file: "{{ lookup('thoteam.var_as_file.var_as_file', some_content) }}"
+
+  tasks:
+    - name: Where is our file ?
+      debug:
+        var: my_tmp_file
+
+    - name: What's its content ?
+      debug:
+        msg: "{{ lookup('file', my_tmp_file) }}"
