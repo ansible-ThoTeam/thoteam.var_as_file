@@ -16,7 +16,7 @@
 <!--te-->
 
 ## DISCLAIMER
-**This is an ongoing and alpha stage work. It has not yet been tested in a lot of situation and might suffer from bugs
+**This is an ongoing and alpha stage work. It has not yet been tested in a lot of situations and might suffer from bugs
 making it unusable with some modules. More over (see [Security](#security) below), it is not compatible with ansible
 concurrent use yet and some data currently persisted on disk should be stored elsewhere. Use at your own risk**
 
@@ -47,8 +47,8 @@ Content files are created via `tempfile.mkstemp` and should be rather secure (ac
 created with a random name, cleared after playbook run)
 
 There are still some concerns:
-* Storing the file list a json static file is not ideal, although the content file should be secure this won't work
-  in multiple user scenario (@todo: find a way to store that info in some ansible cache / stat / fact)
+* Storing the file list as a json static file is not ideal (although the content files should be rather secure). This won't work
+  in multiple user and/or concurrent ansilbe run scenari (@todo: find a way to store that info in some ansible cache / stat / fact)
 * We launch cleanup on `stats` phase. What happens if ansible crashes before?
 
 ## Installing the collection
