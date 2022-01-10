@@ -30,7 +30,7 @@ DOCUMENTATION = '''
 EXAMPLES = """
 - name: Get a filename with the given content for later use
   ansible.builtin.set_fact:
-    my_tmp_file: "{{ lookup('thoteam.var_as_file.var_as_file', some_variable) }}
+    my_tmp_file: "{{ lookup('thoteam.var_as_file.var_as_file', some_variable) }}"
     
 - name: Use in place in a module where a file is mandatory and you have the content in a var
   community.general.java_cert:
