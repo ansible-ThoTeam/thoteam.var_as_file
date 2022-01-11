@@ -29,11 +29,12 @@ import json
 def _make_clean():
     """Clean all files listed in VAR_AS_FILE_TRACK_FILE"""
     try:
-        with open(VAR_AS_FILE_TRACK_FILE, 'r') as jfp:
-            files = json.load(jfp)
-            for f in files.values():
-                os.remove(f)
-        os.remove(VAR_AS_FILE_TRACK_FILE)
+        if (os.path.exists(VAR_AS_FILE_TRACK_FILE)):
+            with open(VAR_AS_FILE_TRACK_FILE, 'r') as jfp:
+                files = json.load(jfp)
+                for f in files.values():
+                    os.remove(f)
+            os.remove(VAR_AS_FILE_TRACK_FILE)
     except Exception as e:
         raise AnsibleError(to_native(repr(e)))
 
