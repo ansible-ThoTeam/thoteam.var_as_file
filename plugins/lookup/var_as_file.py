@@ -9,28 +9,28 @@ DOCUMENTATION = '''
     author:
       - Olivier Clavel (@zeitounator)
     requirements:
-      - For automatic temporary file cleanup: activate the clean_var_as_file callback
+      - 'For automatic temporary file cleanup: activate the clean_var_as_file callback'
     short_description: Get a file path containing a variable/content
     description:
-      - Creates a temporary file with the content passed as argument 
+      - Creates a temporary file with the content passed as argument
         and returns its path on the controller.
     options:
       _content:
         description: the content that should be included in the file.
         required: True
     notes:
-      - Known issue: does not (yet) support concurrency from different process/users.
-      - This lookup will create the files in /tmp with read/write rights for the current user on the controller.
-      - If creating a file for the first time, it will initiate a var_as_file_index.txt containing the names of
+      - 'Known issue: does not (yet) support concurrency from different process/users.'
+      - 'This lookup will create the files in /tmp with read/write rights for the current user on the controller.'
+      - 'If creating a file for the first time, it will initiate a var_as_file_index.txt containing the names of
         the created files during a run. This file will later be read by the clean_var_as_file callback to remove
-        those files.
+        those files.'
 '''
 
 EXAMPLES = """
 - name: Get a filename with the given content for later use
   ansible.builtin.set_fact:
     my_tmp_file: "{{ lookup('thoteam.var_as_file.var_as_file', some_variable) }}"
-    
+
 - name: Use in place in a module where a file is mandatory and you have the content in a var
   community.general.java_cert:
     pkcs12_path: "{{ lookup('thoteam.var_as_file.var_as_file', pkcs12_store_from_vault) }}"
@@ -57,11 +57,13 @@ import tempfile
 import json
 import os
 
+
 def _hash_content(content):
     """
     Returns the hex digest of the sha256 sum of content
     """
     return sha256(content.encode()).hexdigest()
+
 
 class LookupModule(LookupBase):
 

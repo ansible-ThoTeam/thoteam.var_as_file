@@ -5,16 +5,16 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 DOCUMENTATION = '''
-name: clean_var_as_file
-type: utility
-short_description: Cleans-up files created by the var_as_file lookup
+name: 'clean_var_as_file'
+type: notification
+short_description: 'Cleans-up files created by the var_as_file lookup'
 description:
-    - This callback will clean-up all files created by the var_as_file lookup during the play
+    - 'This callback will clean-up all files created by the var_as_file lookup during the play'
 author:
-    - Olivier Clavel (@zeitounator)
+    - 'Olivier Clavel (@zeitounator)'
 requirements:
-    - None at this stage
-options: []
+    - 'None at this stage'
+options: {}
 notes: []
 '''
 
@@ -25,10 +25,11 @@ from ansible.errors import AnsibleError
 import os
 import json
 
+
 def _make_clean():
     """Clean all files listed in VAR_AS_FILE_TRACK_FILE"""
     try:
-        if (os.path.exists(VAR_AS_FILE_TRACK_FILE)):
+        if os.path.exists(VAR_AS_FILE_TRACK_FILE):
             with open(VAR_AS_FILE_TRACK_FILE, 'r') as jfp:
                 files = json.load(jfp)
                 for f in files.values():
@@ -36,6 +37,7 @@ def _make_clean():
             os.remove(VAR_AS_FILE_TRACK_FILE)
     except Exception as e:
         raise AnsibleError(to_native(repr(e)))
+
 
 class CallbackModule(CallbackBase):
     ''' This Ansible callback plugin cleans-up files created by the thoteam.var_as_file.var_as_file lookup '''
