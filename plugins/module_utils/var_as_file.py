@@ -1,6 +1,5 @@
-#  GNU GENERAL PUBLIC LICENSE v3 or later
-#  Copyright (c)  2022 Olivier Clavel <olivier.clavel@thoteam.com>
-#  See COPYING or https://www.gnu.org/licenses/gpl-3.0.en.html
+# Copyright (c) 2022 Olivier Clavel <olivier.clavel@thoteam.com>
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 """
 This is only setting a var so we can share the tracking file path
