@@ -55,4 +55,3 @@ issues: https://github.com/ansible-ThoTeam/thoteam.var_as_file/issues
 # and '.git' are always filtered
 build_ignore:
   - .idea
-
