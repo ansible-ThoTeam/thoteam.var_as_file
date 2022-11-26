@@ -53,8 +53,9 @@ There are still some concerns:
 ## Installing the collection
 From the latest version uploaded to galaxy
 ```console
-
+ansible-galaxy collection install thoteam.var_as_file
 ```
+Or directly from the git repository
 ```console
 ansible-galaxy collection install git+https://github.com/ansible-ThoTeam/thoteam.var_as_file.git,main
 ```
