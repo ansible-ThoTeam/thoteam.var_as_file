@@ -1,19 +1,19 @@
 # Ansible Collection - thoteam.var_as_file
 
-<!--ts-->
+<!-- TOC -->
 * [Ansible Collection - thoteam.var_as_file](#ansible-collection---thoteamvar_as_file)
-   * [DISCLAIMER](#disclaimer)
-   * [Description](#description)
-   * [Technical details](#technical-details)
-      * [thoteam.var_as_file.var_as_file lookup plugin](#thoteamvar_as_filevar_as_file-lookup-plugin)
-      * [thoteam.var_as_file.clean_var_as_file callback plugin](#thoteamvar_as_fileclean_var_as_file-callback-plugin)
-      * [Security](#security)
-   * [Installing the collection](#installing-the-collection)
-   * [Configuring ansible to run the callback](#configuring-ansible-to-run-the-callback)
-   * [Testing with the collection test playbook](#testing-with-the-collection-test-playbook)
-   * [Using the lookup in your own playbook](#using-the-lookup-in-your-own-playbook)
-   * [Licence and copyright](#licence-and-copyright)
-<!--te-->
+  * [DISCLAIMER](#disclaimer)
+  * [Description](#description)
+  * [Technical details](#technical-details)
+    * [thoteam.var_as_file.var_as_file lookup plugin](#thoteamvar_as_filevar_as_file-lookup-plugin)
+    * [thoteam.var_as_file.clean_var_as_file callback plugin](#thoteamvar_as_fileclean_var_as_file-callback-plugin)
+    * [Security](#security)
+  * [Installing the collection](#installing-the-collection)
+  * [Configuring ansible to run the callback](#configuring-ansible-to-run-the-callback)
+  * [Testing with the collection test playbook](#testing-with-the-collection-test-playbook)
+  * [Using the lookup in your own playbook](#using-the-lookup-in-your-own-playbook)
+  * [Licence and copyright](#licence-and-copyright)
+<!-- TOC -->
 
 ## DISCLAIMER
 **This is an ongoing and alpha stage work. It has not yet been tested in a lot of situations and might suffer from bugs
@@ -21,11 +21,10 @@ making it unusable with some modules. More over (see [Security](#security) below
 concurrent use yet and some data currently persisted on disk should be stored elsewhere. Use at your own risk**
 
 ## Description
-
 This work was inspired by [a question asked on StackOverflow][Initial SO question]. The goal was to
-- provide a mechanism to automatically transform a variable to a file with its content
-- return the file name so it can be used in any place a file is expected
-- clean-up after running the playbook all files that were created
+* provide a mechanism to automatically transform a variable to a file with its content
+* return the file name so it can be used in any place a file is expected
+* clean-up after running the playbook all files that were created
 
 ## Technical details
 The collection contains 2 plugins 
@@ -52,6 +51,10 @@ There are still some concerns:
 * We launch cleanup on `stats` phase. What happens if ansible crashes before?
 
 ## Installing the collection
+From the latest version uploaded to galaxy
+```console
+
+```
 ```console
 ansible-galaxy collection install git+https://github.com/ansible-ThoTeam/thoteam.var_as_file.git,main
 ```
@@ -104,9 +107,8 @@ Here is an extract of the examples in the inline doc (auto-generated one day may
 ```
 
 ## Licence and copyright
-GNU GENERAL PUBLIC LICENSE v3 or later</br>
-(c) 2022 Olivier Clavel <olivier.clavel@thoteam.com></br>
-See [COPYING](COPYING) or https://www.gnu.org/licenses/gpl-3.0.en.html
+Copyright (c) 2022 Olivier Clavel <olivier.clavel@thoteam.com>
+GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 
 [Initial SO question]: https://stackoverflow.com/questions/70624954
