@@ -1,3 +1,4 @@
 __pycahce__
 *.pyc
 tests/output
+thoteam-var_as_file-*.tar.gz
