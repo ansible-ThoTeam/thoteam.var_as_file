@@ -16,25 +16,28 @@
 <!-- TOC -->
 
 ## DISCLAIMER
-**This is an ongoing and alpha stage work. It has not yet been tested in a lot of situations and might suffer from bugs
-making it unusable with some modules. More over (see [Security](#security) below), it is not compatible with ansible
-concurrent use yet and some data currently persisted on disk should be stored elsewhere. Use at your own risk**
+This is an ongoing and alpha stage work. It has not yet been tested in a lot of situations and might suffer from bugs
+making it unusable with some existing ansible modules. More over (see [Security](#security) below), it is not compatible
+with ansible concurrent use yet and some data currently persisted on disk should probably be stored elsewhere.
+Use at your own risk
 
 ## Description
 This work was inspired by [a question asked on StackOverflow][Initial SO question]. The goal was to
 * provide a mechanism to automatically transform a variable to a file with its content
 * return the file name so it can be used in any place a file is expected
 * clean-up after running the playbook all files that were created
+* and of course, first and foremost, have some fun while learning something new
 
 ## Technical details
 The collection contains 2 plugins 
 
 ### thoteam.var_as_file.var_as_file lookup plugin
-* The lookup plugin receives the content and creates a temporary file with it using the python method `tempfile.mkstemp()`
+* The lookup plugin receives the content and creates a temporary file with it using
+  the python method `tempfile.mkstemp()`
 * The content is sha256 hashed. This hash is used to reference the above file path in a dictionnary which is persisted
   on disk as json in a static file (currently `/tmp/var_as_file_track.json`).
-* When a new content is asked as file, if it has already, the corresponding file exists and its content has the same hash,
-  its path is returned. Else it is deleted prior to be recreated.
+* When a new content is asked as file, if it has already, the corresponding file exists and its content has
+  the same hash, its path is returned. Else it is deleted prior to be recreated.
 
 ### thoteam.var_as_file.clean_var_as_file callback plugin
 That one is responsible for cleaning up. It listens to the `v2_playbook_on_stats` callback event and
@@ -46,8 +49,9 @@ Content files are created via `tempfile.mkstemp` and should be rather secure (ac
 created with a random name, cleared after playbook run)
 
 There are still some concerns:
-* Storing the file list as a json static file is not ideal (although the content files should be rather secure). This won't work
-  in multiple user and/or concurrent ansilbe run scenari (@todo: find a way to store that info in some ansible cache / stat / fact)
+* Storing the file list as a json static file is not ideal (although the content files should be rather secure). 
+  This won't work in multiple user and/or concurrent ansible run scenarii (@todo: find a way to store that info
+  in some ansible cache / stat / fact)
 * We launch cleanup on `stats` phase. What happens if ansible crashes before?
 
 ## Installing the collection
